@@ -41,6 +41,8 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'bloodapp.apps.BloodappConfig',
+    'bloodrequestapp.apps.BloodrequestappConfig',
+
+    'crispy_forms',
     'django_countries',
 
     'allauth',
@@ -64,6 +69,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,6 +96,7 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = 'Bloodbank.routing.application'
 WSGI_APPLICATION = 'Bloodbank.wsgi.application'
 
 
@@ -150,18 +157,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'bloodapp.User'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_FORMS = {
-'signup': 'users.forms.CustomSignUpForm',
+'signup': 'bloodapp.forms.CustomSignUpForm',
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CHANNEL_LAYER = {
+    "default": {
+        "BACKEND": "channels.redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        }
+    }
+}

@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import User, Profile, Member, Group, Request
-
+from .models import User, Profile
+from bloodrequestapp.models import Membership, UserGroup, BloodRequest
+#from .bloodrequestmodels import BloodRequest
 # Register your models here.
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -11,14 +12,15 @@ class ProfileAdmin(admin.ModelAdmin):
 	pass
 
 
-@admin.register(Member)
-class MemberAdmin(admin.ModelAdmin):
-	pass
+@admin.register(Membership)
+class MembershipAdmin(admin.ModelAdmin):
+	list_display = ['individual', 'group', 'Date_joined']
 
-@admin.register(Group)
+@admin.register(UserGroup)
 class GroupAdmin(admin.ModelAdmin):
-	pass
+	list_display = ['group_code', 'group_name']
+	ordering = ['group_code']
 
-@admin.register(Request)
+@admin.register(BloodRequest)
 class RequestAdmin(admin.ModelAdmin):
 	pass

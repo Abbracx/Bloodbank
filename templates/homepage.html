@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}Home{% endblock %}
+
+{% block extra_head %}
+
+<style>
+  body{
+    padding: 0;
+    margin: 0;
+    }
+    
+  .jumbotron{
+      padding: 200px;
+      color: #ffffff;
+      text-align: center;
+      
+      height: 600px;
+      width: 100%;
+      }
+
+  .figures{
+        font-family: 'poppins';
+      }
+
+  .bg-cover{
+        background-image: url('{% static "bloodapp/img/bgMain.jpeg" %}');
+      background-size: cover;
+      color: white;
+      background-position: center center;
+      position: relative;
+      z-index: -2;
+      }
+
+  .down{
+        margin-top: 20px;
+      }
+
+  .overlay{
+        background-color: #000;
+        color: white;
+        position: absolute;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+      }
+
+  .head{
+        color:#d40404;
+        font-family: 'Poppins';
+      }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+  {% include 'includes/homepage_jumbotron.html' %}
+  {% include 'includes/about.html' %}
+  {% include 'includes/contact_us.html' %}
+  {% include 'includes/footer.html' %}
+     
+{% endblock %}
