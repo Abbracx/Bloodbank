@@ -5,8 +5,8 @@ import django
 django.setup()
 
 
-from bloodapp.models import User, Profile
-from bloodrequestapp.models import UserGroup, Membership, BloodRequest
+from bloodapp.models import User, Profile, BloodRequest
+from bloodrequestapp.models import UserGroup, Membership
 
 
 
