@@ -1,0 +1,145 @@
+
+
+i{
+    color:#d40404;
+}
+
+#slim-font{
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-weight: lighter;
+}
+.container-fluid{
+    height: 80px;
+ background-color:black;
+ padding: 10px;
+ opacity: 10px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
+}
+.navbar-brand img{
+    height: 3rem;
+
+}
+.navbar{
+    opacity: 0.9;
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    color: white;
+    height: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity: 0.8;
+}
+.navbar-collapse{
+    background-color: black;
+}
+/* .navbar li a, .navbar .navbar-brand{
+    color: #d5d5d5 !important;
+
+} */
+.navbar-nav li a:hover, .navbar-nav> .active> a{
+    color: #fff !important;
+    background-color: #292929 !important;
+}
+
+.navbar-default .navbar-toggle{
+    border-color: transparent;
+}
+
+.info{
+   
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+.bg-cover{
+
+    background-size: cover;
+    color: white;
+    background-position: center center;
+    position: relative;
+    z-index: -2;
+}
+
+.contact-container{
+   
+    margin-top: 50px;
+}
+
+
+
+       
+.footer{
+background-color: #d40404;
+    height: 100px;
+    color: white;
+    margin-top: 30px;
+}
+
+.fa-arrow-up{
+    color: white;
+}
+
+/* DASHBOARD */
+
+.dashCard{
+    border-radius: 10px;
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container{
+    height: 100px;
+}
+.center {
+    
+    margin: auto;
+    margin-top: 20px;
+    width: 45%;
+    height: auto;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+}
+
+.shift{
+    margin-left: 10px;
+}
+
+.footerStyle{
+    margin-top: 89px;
+}
+
+.chip{
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+.chip img{
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.right{
+    margin: auto;
+}
+
+.userInfo{
+    background-color: #e9e1dd;
+    padding: 5px;
+    
+}

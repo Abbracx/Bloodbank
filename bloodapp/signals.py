@@ -1,5 +1,5 @@
-from .models import User, Profile
-from bloodrequestapp.models import Membership, UserGroup, BloodRequest
+from .models import User, Profile, BloodRequest
+from bloodrequestapp.models import Membership, UserGroup
 from allauth.account.signals import user_signed_up
 from django.db.models.signals import post_save
 from django.dispatch import receiver

@@ -8,8 +8,9 @@ import random
 import string
 from Bloodbank import settings
 from django.contrib.auth import get_user_model
+from django.apps import apps
 
-from bloodapp.models import BloodRequest
+#BloodRequest = apps.get_model('bloodapp', 'BloodRequest')
 
 
 def _random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
@@ -27,7 +28,7 @@ class UserGroup(models.Model):
     group_code = models.CharField(max_length=3, choices=BLOOD_GROUP)
     group_slug = models.SlugField(max_length=200, unique=True, blank=True)
     member= models.ManyToManyField(settings.AUTH_USER_MODEL, through='Membership', related_name='group_member')
-    #request = models.ManyToManyField(BloodRequest,related_name ='group_request')
+    request = models.ManyToManyField('bloodapp.BloodRequest',related_name ='group_request')
 
     def unique_slug_generator(self, new_slug=None):
 

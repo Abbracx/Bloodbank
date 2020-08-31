@@ -1,6 +1,6 @@
 from django import forms
-from .models import User, Profile
-from bloodrequestapp.models import Membership, UserGroup, BloodRequest
+from .models import User, Profile,  BloodRequest
+from bloodrequestapp.models import Membership, UserGroup
 from allauth.account.forms import SignupForm
 
 
