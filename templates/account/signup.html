@@ -14,18 +14,12 @@
   {% csrf_token %}
       <div class="form-row">
           <div class="form-group col-md-2  mb-0">
-              {{ form.username|as_crispy_field }}
+              {{ form|crispy}}
           </div>
-          <div class="form-group col-md-2  mb-0">
-              {{ form.email|as_crispy_field }}
-          </div>
+         
       </div>
 
-      <div class="form-row">
-          <div class="form-group col-md-2  mb-0">
-              {{ form.address|as_crispy_field }}
-          </div>
-      </div>
+      
       
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
@@ -33,7 +27,7 @@
    <div class="row">
       <div class="col-sm-12 form-group ">
         <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-          <button style="background-color: #d40404;" class="btn btn-danger" type="submit">Login</button>
+          <button style="background-color: #d40404;" class="btn btn-danger" type="submit">Register</button>
       </div>
     </div>    
 </form>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}incoming request{% endblock %}
+   
+{% block content %}
+<div class="container">
+    
+</div>
+
+  <!-- INCOMING REQUESTS -->
+   <div class="center">
+    
+        <div class="userInfo text-center">
+            <h4><strong>UserId</strong></h4>
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Reason For Request</strong> </div>
+                <div class="panel-body">Blood Loss as a result of accident</div>
+                <div class="panel-heading"><strong>Bloodgroup</strong> </div>
+                <div class="panel-body">O+</div>
+            </div>
+            <div class="row">
+                <button style="background-color: rgb(216, 24, 24); color: aliceblue;" type="button" class="btn btn-inverse ">Donate</button>
+                <button type="button" class="btn btn-inverse">Refer</button>
+            </div>
+        </div>
+
+   </div>
+{% endblock %}

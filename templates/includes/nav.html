@@ -1,42 +1,34 @@
   {% load static %}
   <!-- ================== nav bar ================== -->
-	<!--<header class="site-header">
-	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-	    <div class="container">
-	      <a class="navbar-brand mr-4" href="{% url 'bloodapp:homepage' %}">Bloodbank</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	      </button>
-	      <div class="collapse navbar-collapse" id="navbarToggle">
-	        <div class="navbar-nav mr-auto">
-	          <a class="nav-item nav-link" href="{% url 'bloodapp:homepage' %}">Home</a>
-	          <a class="nav-item nav-link" href="{% url 'bloodapp:about' %}">About</a>
-          </div>
-          {% if user.is_authenticated %}
-            
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="{% url 'account_email' %}">Change E-mail</a>
-              <a class="nav-item nav-link" href="{% url 'bloodapp:profile' user.id %}">Profile</a>
-              <a class="nav-item nav-link" href="#">Notifications<span><h4 style="color: white">3</h4></span></a>
-              <a class="nav-item nav-link" href="{% url 'account_logout' %}">Logout</a>
-            </div>
-          {% else %}
-            
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="{% url 'account_login' %}">Login</a>
-              <a class="nav-item nav-link" href="{% url 'account_signup' %}">Register</a>
-            </div>
-          {%endif%}
-	        
+
+  {% if user.is_authenticated %}
+    <nav class="navbar navbar-default navbar-fixed-top">
+     <div class="container-fluid">
+       <div class="navbar-header">
+         <!--button to toggle navbar if it is resized  -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand animated fadeInDown" href="#">BloodApp Dashboard </a>
+          
+       </div>
+       <!-- navigation items -->
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a onclick="window.location.href = ' {% url 'bloodapp:dashboard' %} ' "; class="animated fadeInDown prevent">DASHBOARD</a></li>
+              <li><a  href="#" class="animated fadeInDown prevent">DONATE</a></li>
+              <li><a id="refer" href="refer.html" class="animated fadeInDown prevent">REFER</a></li>
+              <li><a href="request.html" class="animated fadeInDown prevent">REQUEST</a></li>
+              <li><a href="{% url 'bloodapp:profile' user.user_id %}" class="animated fadeInDown prevent">notifications<i style="color: white;" class="fa fa-bell notification"><span class="badge" style="background-color:red">3</span></i></a></li>
+              <li><a onclick="window.location.href = ' {% url 'bloodapp:profile' user.user_id %} ' ";  class="animated fadeInDown prevent ">{{user.username}}<i style="color: white;" class="fa fa-user-circle-o"></i></a></li>
+              <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_logout' %} ';">Logout</button>         
+          </ul>
         </div>
-        
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-	    </div>
-	  </nav>
-	</header>-->
+     </div>
+   </nav>
+  {% else %}
     <nav class="navbar navbar-default navbar-fixed-top">
      <div class="container-fluid">
        <div class="navbar-header">
@@ -51,22 +43,15 @@
        <!-- navigation items -->
        <div class="collapse navbar-collapse" id="myNavbar">
          <ul class="nav navbar-nav navbar-right">
-
-         {% if user.is_authenticated %}
-           <li><a href="{% url 'bloodapp:homepage' %}" class="animated fadeInDown">HOME</a></li>
-           <li><a href="#about" class="animated fadeInDown">ABOUT</a></li>
-           <li><a href="#support" class="animated fadeInDown">SUPPORT</a></li>
-           <li><a href="#contact" class="animated fadeInDown">CONTACT</a></li>
-           <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_logout' %} ';">Logout</button>
-          {% else %}
-          <li><a href="#home" class="animated fadeInDown">HOME</a></li>
+          <li><a href="#" class="animated fadeInDown">HOME</a></li>
            <li><a href="#about" class="animated fadeInDown">ABOUT</a></li>
            <li><a href="#support" class="animated fadeInDown">SUPPORT</a></li>
            <li><a href="#contact" class="animated fadeInDown">CONTACT</a></li>
            <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_signup' %} ';">Register</button>
            <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_login' %} ';">Login</button>
-          {% endif %} 
+          
          </ul>
        </div>
      </div>
    </nav>
+{% endif %} 

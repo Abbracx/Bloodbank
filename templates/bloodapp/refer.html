@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}Donate{% endblock %}
+   
+{% block content %}
+     <div class="container">
+    
+  </div>
+   <div class="center">
+     
+    <form role="form" >
+      <h1><strong>REFER</strong></h1>
+      <div class="form-group">
+        <label for="Bloodgroup">Bloodgroup</label>
+       
+        <label for="Reasons">Reasons</label>
+        <select class="form-control" aria-placeholder="Blood Group">
+          <option>Blood Loss</option>
+          <option>Sickle Cell</option>
+          <option>Emergency</option>
+          <option>Child birth</option>
+        </select>
+        <div class="form-group">
+          <label for="comment">Email</label>
+          <input type="email" class="form-control">
+          
+        </div>
+        <div class="form-group">
+          <label for="comment">Phone Number</label>
+          <input type="text" class="form-control">
+          
+        </div>
+       <div class="form-group">
+        <div class="form-group">
+          <label for="comment">Other Reason(s)</label>
+          <textarea class="form-control" rows="5" id="comment" ></textarea>
+          
+        </div>
+        <div class="row text-center">
+          <button style="background-color: red; color: whitesmoke;"type="button" class="btn btn-default "  data-toggle="modal" data-target="#myModal">SEND</button>
+
+          <button style="background-color: rgb(37, 35, 35); color: whitesmoke;"type="button" class="btn btn-default "  data-toggle="modal" data-target="#myModal">CALL</button>
+
+        </div>
+        <!-- SUCCESS MODAL -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&CircleTimes;</button>
+                <h4 class="modal-title">REQUEST IN PROGRESS</h4>
+              </div>
+              <div class="modal-body">
+                <i class="fa fa-cog fa-spin fa-4x"></i>
+               <h3> We will notify you once your request is complete</h3>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </form>
+   </div>
+{% endblock %}

@@ -9,6 +9,7 @@ import string
 from Bloodbank import settings
 from django.contrib.auth import get_user_model
 
+from bloodapp.models import BloodRequest
 
 
 def _random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
@@ -62,11 +63,3 @@ class Membership(models.Model):
         return  f'{Membership.objects.all().count()} members are available.'
 
 
-class BloodRequest(models.Model):
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='receipient')
-    receiver = models.ForeignKey(UserGroup, on_delete=models.CASCADE, verbose_name='donor')
-    message = models.CharField(max_length=255)
-    request_date = models.DateTimeField(default=timezone.now)
-    
-    def __str__(self):
-        return f'{self.sender.username} sends a blood request to {self.receiver.group_name}'

@@ -8,11 +8,15 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
-@login_required
+
 def homepage(request):
 	
 	form = ContactUsForm()
 	return render(request, 'homepage.html', {'form': form})
+
+@login_required
+def dashboard(request):
+	return render(request, "dashboard.html")
 
 @login_required
 def profile(request, user_id):
@@ -20,7 +24,7 @@ def profile(request, user_id):
 	context = {}
 
 	try:
-		user = User.objects.get(pk=user_id)
+		user = User.objects.get(user_id=user_id)
 	except User.DoesNotExist:
 		return HttpResponse('no user')
 
