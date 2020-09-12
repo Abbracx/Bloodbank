@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import User, Profile, BloodRequest
-from bloodrequestapp.models import Membership, UserGroup
+from .models import User, Profile
+from bloodrequestapp.models import Membership, UserGroup, BloodRequest
 from django.urls import reverse
 from .forms import UserUpdateForm, ProfileUpdateForm, ContactUsForm
 from django.contrib import messages

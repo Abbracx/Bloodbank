@@ -30,7 +30,7 @@ class Profile(models.Model):
     GENDER = (('m','Male'), ('f','Female'))
     
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User,  on_delete=models.CASCADE)
     gender = models.CharField(max_length=1, choices=GENDER)
     phone = models.CharField(max_length=11, blank=True, null=True)
     country = CountryField()
@@ -40,13 +40,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} ({self.user.email})'
-
-
-class BloodRequest(models.Model):
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='receipient')
-    receiver = models.ForeignKey(UserGroup, on_delete=models.CASCADE, verbose_name='donor')
-    message = models.CharField(max_length=255)
-    request_date = models.DateTimeField(default=timezone.now)
-    
-    def __str__(self):
-        return f'{self.sender.username} sends a blood request to {self.receiver.group_name}'

@@ -1,18 +1,22 @@
 from django.contrib import admin
-from .models import User, Profile, BloodRequest
+from .models import User, Profile
+from bloodrequestapp.models import BloodRequest
 
 #from .bloodrequestmodels import BloodRequest
 # Register your models here.
+
+class RequestInline(admin.TabularInline):
+	model = BloodRequest
+	extra = 1
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-	pass
+
+	inlines = [
+		RequestInline,
+	]
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
 	pass
 
-
-
-@admin.register(BloodRequest)
-class RequestAdmin(admin.ModelAdmin):
-	pass

@@ -5,5 +5,40 @@
 {% block head_title %}Request{% endblock %}
    
 {% block content %}
+     <div class="container">
+    
+  </div>
+   <div class="center">
+     
+    <form role="form", id="request_form" action="{% url 'bloodrequestapp:blood_request' %}" method="POST">
+       {% csrf_token %}
+      <h1><strong>REQUEST</strong></h1>
+      <div class="form-group">
+        {{form |crispy }}
+      </div>
+        <button style="background-color: red; color: whitesmoke;"type="submit" class="btn btn-default">Proceed</button><!--data-toggle="modal" data-target="#myModal" -->
+        <!-- SUCCESS MODAL -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&CircleTimes;</button>
+                <h4 class="modal-title">REQUEST IN PROGRESS</h4>
+              </div>
+              <div class="modal-body">
+                <i class="fa fa-cog fa-spin fa-4x"></i>
+               <h3> We will notify you once your request is complete</h3>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </form>
+   </div>
+
 
 {% endblock %}

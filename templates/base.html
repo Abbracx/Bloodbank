@@ -1,3 +1,4 @@
+
 {% load static %}
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
@@ -35,11 +36,63 @@
   <script src="{% static 'bloodapp/js/script.js' %}"></script>
   <script src="{% static 'bloodapp/maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'bloodapp/js/wow.min.js' %}"></script>
+  
 
 
   <script>
       // INITIALIZING THE ANIMATION PLUGIN
       new WOW().init();
+      {% if user.is_authenticated %}
+        console.log(window.location)
+        
+          var formData = $("#request_form")
+          var bloodGroupInput = $("#id_blood_group")
+          var reasonInput = $("#id_reason")
+          var messageInput = $("#id_message")
+          
+          var loc = window.location
+          var ws_start = 'ws://'
+
+          if(loc.protocol == 'https'){
+            ws_start = 'wss://'
+          }
+          var end_point = ws_start + loc.host + loc.pathname
+          console.log(end_point)
+          //socket = new WebSocket(end_point)
+
+          socket.onmessage = function(e){
+            console.log('message', e)
+          }
+          socket.onopen = function(e){
+            console.log('message', e)
+
+            formData.submit(function(event){
+                
+                let blood_group = bloodGroupInput.val()
+                let reason = reasonInput.val()
+                let message = messageInput.val()
+                
+                var obj = {
+                  "blood" : blood_group,
+                  "reason": reason,
+                  "message": message
+                }
+                socket.send(JSON.stringify(obj))
+            })
+            
+          }
+          socket.onerror = function(e){
+            console.log('message', e)
+          }
+          socket.onclose = function(e){
+            console.log('message', e)
+          }
+
+        
+
+        
+
+      {% endif %}
     </script>
 <!--
      <script src="{% static 'bloodapp/ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' %}"></script>

@@ -11,48 +11,57 @@
   </div>
 
   <!-- INCOMING REQUESTS -->
-   <div class="center">
-        <div class="row">
-        <div class="col-md-6">
-            <div class="chip">
-            <img src="img/eagle.jpg" width="96">
-            Justin Flakes
-            </div>
-        
-        </div>
-        <div class="col-md-4 right">
-            <button type="button" class="btn btn-primary">View <span class="badge"></span></button>
-        </div>
 
-        
-        </div> 
-        <br>
-        <div class="row">
-        <div class="col-md-6">
-            <div class="chip">
-            <img src="img/eagle.jpg" width="96">
-            Justin Flakes
-            </div>
-        
-        </div>
-        <div class="col-md-4 right">
-            <button type="button" class="btn btn-primary">View <span class="badge"></span></button>
-        </div>      
-        </div> 
-        <br>
-        <div class="row">
-        <div class="col-md-6">
-            <div class="chip">
-            <img src="img/eagle.jpg" width="96">
-            Justin Flakes
-            </div>
-        
-        </div>
-        <div class="col-md-4 right">
-            <a href="incomingrequest.html"><button type="button" class="btn btn-primary">View <span class="badge"></span></button></a>
-        </div>      
-        </div> 
-    
 
+    <div class="center">
+        <div class="row">
+            <div class="col-md-6">
+                {{request.request_date}}
+                <div class="chip">
+                    <img src="{% static 'bloodapp/img/eagle.jpg' %}" width="96">
+                    {{request.message}}
+                </div>
+            </div>
+            <div class="col-md-4 right">
+                <button type="button" class="btn btn-primary">View <span class="badge"></span></button>
+            </div>
+        </div> 
    </div>
+    
+      <div class="center">
+        <div class="row">
+            <div class="col-md-6">
+                {{request.request_date}}
+                <div class="chip">
+                    <img src="{% static 'bloodapp/img/eagle.jpg' %}" width="96">
+                    {{request.message}}
+                </div>
+            </div>
+            <div class="col-md-4 right">
+                <button type="button" class="btn btn-primary">View <span class="badge"></span></button>
+            </div>
+        </div> 
+   </div>
+    
+   
+     <div class="center">
+        <div class="row">
+            <div class="col-md-6">
+                {{request.request_date}}
+                <div class="chip">
+                    <img src="{% static 'bloodapp/img/eagle.jpg' %}" width="96">
+                    {{request.message}}
+                </div>
+            </div>
+            <div class="col-md-4 right">
+                <button type="button" class="btn btn-primary">View <span class="badge"></span></button>
+            </div>
+        </div> 
+   </div>
+    
+   
+   
+   
+   
+
    {% endblock %}

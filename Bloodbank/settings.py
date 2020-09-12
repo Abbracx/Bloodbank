@@ -102,14 +102,13 @@ WSGI_APPLICATION = 'Bloodbank.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -176,13 +175,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CHANNEL_LAYER = {
-    "default": {
-        "BACKEND": "channels.redis.core.RedisChannelLayer",
-        "CONFIG": {
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
             "hosts": [("localhost", 6379)],
-        }
-    }
+        },
+    },
 }
+
+PAYSTACK_SECRET_KEY = 'sk_test_62906e39de1aa16ec336defee95c5f397d782334'
 
 django_heroku.settings(locals())

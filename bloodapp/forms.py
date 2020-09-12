@@ -1,6 +1,6 @@
 from django import forms
-from .models import User, Profile,  BloodRequest
-from bloodrequestapp.models import Membership, UserGroup
+from .models import User, Profile
+from bloodrequestapp.models import Membership, UserGroup,  BloodRequest
 from allauth.account.forms import SignupForm
 
 
@@ -41,3 +41,4 @@ class ContactUsForm(forms.Form):
 
     class Meta:
         fields = ['name','email','message']
+

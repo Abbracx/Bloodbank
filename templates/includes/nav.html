@@ -18,10 +18,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
               <li><a onclick="window.location.href = ' {% url 'bloodapp:dashboard' %} ' "; class="animated fadeInDown prevent">DASHBOARD</a></li>
-              <li><a  href="#" class="animated fadeInDown prevent">DONATE</a></li>
-              <li><a id="refer" href="refer.html" class="animated fadeInDown prevent">REFER</a></li>
-              <li><a href="request.html" class="animated fadeInDown prevent">REQUEST</a></li>
-              <li><a href="{% url 'bloodapp:profile' user.user_id %}" class="animated fadeInDown prevent">notifications<i style="color: white;" class="fa fa-bell notification"><span class="badge" style="background-color:red">3</span></i></a></li>
+              <li><a  onclick="window.location.href = ' {% url 'bloodrequestapp:blood_donate' %} ' ";  class="animated fadeInDown prevent">DONATE</a></li>
+              <li><a id="refer" onclick="window.location.href = ' {% url 'bloodrequestapp:blood_refer' %} ' "; class="animated fadeInDown prevent">REFER</a></li>
+              <li><a onclick="window.location.href = ' {% url 'bloodrequestapp:blood_request' %} ' ";  class="animated fadeInDown prevent">REQUEST</a></li>
+              <li><a onclick="window.location.href = ' {% url 'bloodrequestapp:user_requests' user.user_id %} ' ";  class="animated fadeInDown prevent">VIEW-REQUEST</a></li>
+              <li><a onclick="window.location.href = ' {% url 'bloodrequestapp:incoming_request' %} ' "; class="animated fadeInDown prevent">notifications<i style="color: white;" class="fa fa-bell notification"><span class="badge" style="background-color:red">3</span></i></a></li>
               <li><a onclick="window.location.href = ' {% url 'bloodapp:profile' user.user_id %} ' ";  class="animated fadeInDown prevent ">{{user.username}}<i style="color: white;" class="fa fa-user-circle-o"></i></a></li>
               <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_logout' %} ';">Logout</button>         
           </ul>

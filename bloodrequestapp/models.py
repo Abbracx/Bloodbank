@@ -17,6 +17,33 @@ def _random_string_generator(size=10, chars=string.ascii_lowercase + string.digi
     return ''.join(random.choice(chars) for _ in range(size))
 
 
+
+class BloodRequest(models.Model):
+
+    REQUEST_REASONS = (('1','Blood Loss'),
+                        ('2', 'Child Birth'), 
+                        ('3', 'Emergency'),
+                        ('4', 'Sickle Cell'))
+
+    BLOOD_TYPE = (('A+','A+'), ('B+', 'B+'),
+                    ('O+', 'O+'),('O-','O-'),
+                    ('A-','A-'),('B-','B-'),
+                    ('AB+','AB+'),('AB-','AB-'))
+
+
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='receipient', related_name='blood_requests')
+    #receiver = models.ForeignKey(UserGroup, on_delete=models.CASCADE, verbose_name='donor')
+    blood_type = models.CharField(max_length=3, choices=BLOOD_TYPE, default=None)
+    reason = models.CharField(max_length=50, choices=REQUEST_REASONS)
+    message = models.TextField(max_length=255)
+    request_date = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        get_latest_by = 'request_date'
+    
+    def __str__(self):
+        return f'{self.sender.username} sends a blood request. '
+
 class UserGroup(models.Model):
 
     BLOOD_GROUP = (('A+','A+'), ('B+', 'B+'),
@@ -27,8 +54,19 @@ class UserGroup(models.Model):
     group_name = models.CharField(max_length=100)
     group_code = models.CharField(max_length=3, choices=BLOOD_GROUP)
     group_slug = models.SlugField(max_length=200, unique=True, blank=True)
-    member= models.ManyToManyField(settings.AUTH_USER_MODEL, through='Membership', related_name='group_member')
-    request = models.ManyToManyField('bloodapp.BloodRequest',related_name ='group_request')
+    members = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Membership', related_name='usergroups')
+    request = models.ManyToManyField(BloodRequest,related_name ='usergroups')
+
+
+    class Meta:
+        verbose_name = "Blood Group's"
+        verbose_name_plural = verbose_name
+
+    def get_all_request(self):
+        for message in self.request.values_list('message', flat=True):
+            print(message)
+
+
 
     def unique_slug_generator(self, new_slug=None):
 
@@ -62,5 +100,4 @@ class Membership(models.Model):
 
     def __str__(self):
         return  f'{Membership.objects.all().count()} members are available.'
-
 

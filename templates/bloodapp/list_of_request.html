@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}Donate{% endblock %}
+   
+{% block content %}
+
+<div class="container">
+    
+  </div>
+
+  <!-- INCOMING REQUESTS -->
+<h2 style="text-align:center">All Request Placed By The Curent Logged in User </h2>
+    {% for request in all_sent_request %}
+    <div class="center">
+        <div class="row">
+            <div class="col-md-6">
+                {{request.request_date}}
+                <div class="chip">
+                    <img src="{% static 'bloodapp/img/eagle.jpg' %}" width="96">
+                    {{request.message}}
+                </div>
+            </div>
+            <div class="col-md-4 right">
+                <button type="button" class="btn btn-primary">View <span class="badge"></span></button>
+                <button type="button" class="btn btn-danger">Delete <span class="badge"></span></button>
+            </div>
+        </div> 
+    {% empty %}
+    <div class="userInfo text-center">
+    <h4 >You have not placed any request.</h4>
+    </div>   
+    {% endfor %}
+   </div>
+
+   {% endblock %}

@@ -1,11 +1,7 @@
-import asyncio
-from channels.generic.websocket import AsyncJsonWebsocketConsumer
+from django.urls import path
 
-class NoseyConsumer(AsyncJsonWebsocketConsumer):
+from . import consumers
 
-    async def connect(self):
-        await self.accept()
-        await self.channel_layer.group_add(
-            'gossip',
-            self.channel_layer
-            )
+websocket_urlpatterns = [
+    path('donate/', consumers.NotifyConsumer),
+]

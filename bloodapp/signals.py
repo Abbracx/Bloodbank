@@ -1,10 +1,8 @@
-from .models import User, Profile, BloodRequest
+from .models import User, Profile
 from bloodrequestapp.models import Membership, UserGroup
 from allauth.account.signals import user_signed_up
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
 
 
 @receiver(user_signed_up)
@@ -19,27 +17,13 @@ def create_user_profile(sender, request, **kwargs):
 	except UserGroup.DoesNotExist:
 		group = None
 	else:
-		created = Profile.objects.get_or_create(user=instance, address=address, blood_group=group)[1]
-		member = Membership.objects.create(individual=instance, group=group)
-		member.save()
-		print(created)
+		Profile.objects.create(user=instance, address=address, blood_group=group)
+		Membership.objects.create(individual=instance, group=group)
+		group.members.add(instance)
+		
 
 
-@receiver(post_save, sender=BloodRequest)
-def announce_new_request(sender, instance, created, **kwargs):
-	if created:
-		channel_layer = get_channel_layer()
 
-		'''
-			sending messsage through the channel layer inform of a broadcast.
-		'''
-		async_to_sync(channel_layer.group_send)(
-			"gossip", {
-				"type": "user.gossip",
-				"event": "New User",
-				"username": instance.username 
-			}
-		)
 '''
 @receiver(user_signed_up)
 def create_user_membership(sender, **kwargs):
