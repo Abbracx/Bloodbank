@@ -30,11 +30,11 @@ def blood_request(request):
             "A+" :  ['O-', 'O+', 'A-', 'A+'],
             "B+" :  ['O-', 'O+', 'B-', 'B+'],
             "AB+":  ['O-','O+','B-','B+','A-','A+','AB-','AB+'],
-            "O+" :  ['O+','O-'],
+            "O+" :  ['O-','O+'],
             "O-" :  ['O-'],
             "AB-":  ['O-','B-', 'A-', 'AB-'],
-            "B-" :  ['O+','B-'],
-            "A-" :  ['O+','A-']
+            "B-" :  ['O-','B-'],
+            "A-" :  ['O-','A-']
             }
       
             possible_list_of_donors = group_of_donors.get(blood_request.blood_type, None)
