@@ -65,8 +65,8 @@ def incoming_request(request):
     try:
         user_id = request.user.user_id
         user = User.objects.get(user_id= user_id)
-        print(user.profile.blood_group)
-        user_group = UserGroup.objects.get(members=user)
+       
+        user_group = UserGroup.objects.get(group_code=user.profile.blood_group)
     except KeyError:
         raise HttpResponse('No such user')
     except User.DoesNotExist:
