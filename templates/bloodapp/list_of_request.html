@@ -17,13 +17,11 @@
         <div class="row">
             <div class="col-md-6">
                 {{request.request_date}}
-                <div class="chip">
-                    <img src="{% static 'bloodapp/img/eagle.jpg' %}" width="96">
-                    {{request.message}}
-                </div>
+                <br>
+                {{request.message}}
             </div>
             <div class="col-md-4 right">
-                <button type="button" class="btn btn-primary">View <span class="badge"></span></button>
+                <a href="#" class="btn btn-primary">Edit <span class="badge"></span></a>
                 <button type="button" class="btn btn-danger">Delete <span class="badge"></span></button>
             </div>
         </div> 

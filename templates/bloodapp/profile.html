@@ -3,23 +3,51 @@
 
 
 
-
+<div class="container">
 {% block content %}
    <!-- <h2><a href="{% url 'bloodapp:homepage' %}">Home</a> </h2>-->
     <a href="#" style="margin-left: 80%; margin-bottom: 5px" class="btn btn-outline-secondary">Make Request</a>
     {% if user %} 
         <div class="content-section">
             <div class="media">
-                <img src="{{ user.profile.image.url }}" alt="" class="rounded-circle account-img">
+                
                 <div class="media-body">
-                    <h4 class="account-heading">{{user.username}}</h4>
+                <div class="" style="margin-left:45%">
+                    <img src="{{ user.profile.image.url }}"  alt="" class="rounded-circle account-img">
+                    <h4 class="account-heading" >{{user.username}}</h4>
                     <p class="text-secondary">{{user.email}}</p>
+                </div>
+                    
                     <form action="{% url 'bloodapp:profile' user.user_id %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <fieldset class="form-group">
                             <legend class="border-bottom mb-4"> Profile Info </legend>
-                            {{user_form.as_p}}
-                            {{profile_form.as_p}}
+                            
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-0">
+                                {{user_form.email|as_crispy_field}}
+                                </div>
+                                 <div class="form-group col-md-6 mb-0">
+                                {{user_form.username|as_crispy_field}}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 mb-0">
+                                {{profile_form.phone|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-4 mb-0">
+                                {{profile_form.blood_group|as_crispy_field}}
+                                </div>
+                                <div class="form-group col-md-4 mb-0">
+                                {{profile_form.country|as_crispy_field}}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-0">
+                                    {{profile_form.address|as_crispy_field}}
+                                </div>
+                            </div>
+                            {{profile_form.image|as_crispy_field}}
                         </fieldset>
                         <div class="form-group">
                             <button class="btn btn-outline-info" type="submit">update</button>
@@ -31,3 +59,4 @@
         </div>
     {% endif %}
 {% endblock %}
+</div>
