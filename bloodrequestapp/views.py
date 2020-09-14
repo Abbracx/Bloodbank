@@ -38,16 +38,13 @@ def blood_request(request):
             }
       
             possible_list_of_donors = group_of_donors.get(blood_request.blood_type, None)
-
-            all_groups = UserGroup.objects.all()
             
             if possible_list_of_donors is not None:
-                for group in all_groups:
-                    if group.group_code in possible_list_of_donors:
-                        blood_group = group.group_name
-                        group.request.add(blood_request)
-                        messages.success(request, f'blood request sent successfully.')
-                        return redirect('bloodrequestapp:user_requests', user_id)
+                for group_code in possible_list_of_donors:
+                    group = UserGroup.objects.get(group_code=group_code)
+                    group.request.add(blood_request)
+                messages.success(request, f'blood request sent successfully.')
+                return redirect('bloodrequestapp:user_requests', user_id)
 
     form = BloodRequestForm()
     context = {'form': form}
