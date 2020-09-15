@@ -9,7 +9,8 @@ from django.dispatch import receiver
 def create_user_profile(sender, request, **kwargs):
 	instance = kwargs['user']
 	#import pdb; pdb.set_trace()
-	address = request.POST.get('address')
+	country = request.POST.get('country')
+	city = request.POST.get('city')
 	blood_group = request.POST.get('blood_group')
 
 	try:
@@ -17,7 +18,7 @@ def create_user_profile(sender, request, **kwargs):
 	except UserGroup.DoesNotExist:
 		group = None
 	else:
-		Profile.objects.create(user=instance, address=address, blood_group=group)
+		Profile.objects.create(user=instance, country=country, city=city, blood_group=group)
 		Membership.objects.create(individual=instance, group=group)
 		group.members.add(instance)
 		

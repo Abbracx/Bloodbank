@@ -36,11 +36,14 @@ def profile(request, user_id):
 			user_form.save()
 			profile_form.save()
 			messages.success(request, f'profile updated successfuly')
+			print("It updated")
 			return redirect('bloodapp:profile', user_id)
 		else:
 			user_form = UserUpdateForm(instance=user)
 			profile_form = ProfileUpdateForm(instance=user.profile)
-			
+			print("Did not update")
+	
+	print("Just rendererd")
 	user_form = UserUpdateForm(instance=user)
 	profile_form = ProfileUpdateForm(instance=user.profile)
 

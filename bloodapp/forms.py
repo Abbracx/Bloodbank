@@ -2,6 +2,9 @@ from django import forms
 from .models import User, Profile
 from bloodrequestapp.models import Membership, UserGroup,  BloodRequest
 from allauth.account.forms import SignupForm
+from django_countries.fields import CountryField
+from django_countries.widgets import CountrySelectWidget
+
 
 
 class CustomSignUpForm(SignupForm):
@@ -12,8 +15,12 @@ class CustomSignUpForm(SignupForm):
                     ('AB+','AB+'),('AB-','AB-'))
 
     blood_group = forms.CharField(max_length=5, widget=forms.Select(choices=BLOOD_GROUP), required=True)
-    address = forms.CharField(max_length=200, widget=forms.Textarea, required=True)
+    country = CountryField().formfield()
+    city = forms.CharField(max_length=250, required=True)
+    #address = forms.CharField(max_length=200, widget=forms.Textarea, required=True)
     
+    
+
     def signup(self, request, user):
         
         user.save()
@@ -32,7 +39,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields  =  ['phone','country','address','blood_group','image']
+        fields  =  ['phone','country','city','address','blood_group','image']
 
 class ContactUsForm(forms.Form):
     name = forms.CharField(max_length=100, required=True)

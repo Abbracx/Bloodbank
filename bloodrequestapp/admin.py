@@ -23,5 +23,6 @@ class MembersInline(admin.TabularInline):
 class GroupAdmin(admin.ModelAdmin):
 	list_display = ['group_code', 'group_name']
 	ordering = ['group_code']
+	filter_horizontal = ('request',)
 	inlines = (MembersInline,)
 	

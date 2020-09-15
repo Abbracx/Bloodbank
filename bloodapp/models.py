@@ -34,6 +34,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER)
     phone = models.CharField(max_length=11, blank=True, null=True)
     country = CountryField()
+    city = models.CharField(max_length=250)
     address = models.TextField()
     image = models.ImageField(default='default.jpeg',   upload_to='profile_pics')
     blood_group = models.ForeignKey(UserGroup, default=1, on_delete=models.CASCADE)
