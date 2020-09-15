@@ -180,12 +180,12 @@ CHANNEL_LAYERS = {
 
 #EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 #SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
-SENDGRID_SANDBOX_MODE_IN_DEBUG=False
+#EMAIL_HOST = 'smtp.sendgrid.net'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER = 'apikey'
+#EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+#SENDGRID_SANDBOX_MODE_IN_DEBUG=False
 
 PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
 
