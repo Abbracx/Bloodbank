@@ -10,8 +10,9 @@
 </div>
 
   <!-- INCOMING REQUESTS -->
+  {% for request in incoming_request %}
    <div class="center">
-    {% for request in incoming_request %}
+    
         <div class="userInfo text-center">
             <h4><strong>{{request.sender.username}}</strong></h4>
             <div class="panel panel-default">
@@ -25,8 +26,9 @@
                 <button type="button" class="btn btn-inverse">Refer</button>
             </div>
         </div>
+     </div>
     {% empty %}
         <h4 style="text-align:center"><strong>No Incoming request recently</strong></h4>
     {% endfor%}
-   </div>
+ 
 {% endblock %}
