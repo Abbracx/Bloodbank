@@ -14,8 +14,9 @@
 <h2 style="text-align:center">All Request Placed By The Curent Logged in User </h2>
     
     <div class="center">
+     {% for request in all_sent_request %}
         <div class="row">
-        {% for request in all_sent_request %}
+       
             <div class="col-md-6">
                 {{request.request_date}}
                 <br>
@@ -25,13 +26,12 @@
                 <a href="#" class="btn btn-primary">Edit <span class="badge"></span></a>
                 <button type="button" class="btn btn-danger">Delete <span class="badge"></span></button>
             </div>
-        {% empty %}
+        </div> 
+    {% empty %}
             <div class="userInfo text-center">
             <h4 >You have not placed any request.</h4>
             </div>   
-        {% endfor %}
-        </div> 
-    
+    {% endfor %}
    </div>
 
    {% endblock %}
