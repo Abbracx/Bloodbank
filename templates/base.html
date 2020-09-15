@@ -26,8 +26,11 @@
 
             {% block body %}
             
-              {% include 'includes/messages.html' %}
-              {% block content %}{% endblock %} 
+              
+              {% block content %}
+              {% include 'includes/messages.html' %} 
+              
+              {% endblock %} 
 
             {% endblock %}
 
