@@ -15,8 +15,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DEBUG') == 'True'
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == 'True'
+#DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'Bloodbank.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -102,7 +102,7 @@ DATABASES = {
     }
 }
 
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
