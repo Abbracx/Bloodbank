@@ -54,12 +54,21 @@
         color:#d40404;
         font-family: 'Poppins';
       }
+
+  .info{
+   
+    height: 100%;
+    width: 100%;
+}
 </style>
 
 {% endblock %}
 
 {% block body %}
-
+      <section class="section red darken-3 ">
+        <div class="container">
+        </div> 
+      </section>
       <!--Section-->  
     <section class="slider">
         <ul class="slides">
@@ -76,7 +85,7 @@
     </section>
      
 
-     <section class="section  black darken-1">
+     <section class="section red darken-3">
         <div class="container">
         </div> 
     </section>
@@ -84,15 +93,25 @@
     <section id="about" class="section section-about black darken-1 white-text center scrollspy">
         <div class="container">
           <div class="row">
-            <div class="col s12 m6 l8">
-              <h1 class=""><strong>ABOUT US</strong></h1>
-                <h4>BitLifw is a platform that makes it easy for blood donnors and recipients to connect and make transactions easy.</h4>
-                <p>Our platform simplies transactions for those seeking to donate blood, recipients or people who might make referals to others in neeed</p>
+            <h4 class="center">About <span class="red-text">BitLife</span></h4>
+            <div class="col s12 m4 l4">
+              <img class="info" src="{% static 'bloodapp/img/children.jpeg' %}" style="border: solid 1px #d40404;"> 
+             
+            </div>
+            
+            <div class="col s12 m2 l2">
+            </div>
+            <div class="col s12 m6 l6">
+                <h5>BitLife is a platform that makes it easy for blood donors and recipients to connect and make transactions easly.</h5>
+                <p>Our platform:</p>
+                <ul >
+                  <li>Simplifies transactions for those seeking to donate blood.</li>
+                  <li>Permit individuals who make referals to others in need.</li>
+                  <li>Connects recipients to possible donors.</li>
+                </ul>
               </div>
             </div>
-            <div class="col s12 m6 l4">
-              <img class="  info" src="{% static 'bloodapp/img/children.jpeg' %}" style="border: solid 1px #d40404; width: 200px; height: 200px;"> 
-            </div>
+            
           </div>
         </div> 
     </section>
@@ -102,27 +121,94 @@
             <div class="row">
                 <div class="col s12 m4">
                     <div class="card-panel ">
-                        <i class="material-icons large teal-text">room</i>
-                        <h3>Travel Shop</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus, veniam?</p>
+                        <i class="material-icons large red-text">share</i>
+                        <h3 class="red-text">Donations</h3>
+                        <h5><strong>1000</strong></h5>
                     </div>   
                 </div>
                 <div class="col s12 m4">
                     <div class="card-panel ">
-                        <i class="material-icons large teal-text">store</i>
-                        <h3>Pick Where</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus, veniam?</p>
+                        <i class="material-icons large red-text">people</i>
+                        <h3 class="red-text">Users</h3>
+                        <h5><strong>1000</strong></h5>
                     </div>   
                 </div>
                 <div class="col s12 m4">
                     <div class="card-panel ">
-                        <i class="material-icons large teal-text">airplanemode_active</i>
-                        <h3>Fly Cheap</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus, veniam?</p>
+                        <i class="material-icons large red-text">pan_tool</i>
+                        <h3 class="red-text">Request</h3>
+                        <h5><strong>1000</strong></h5>
                     </div>   
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="contact" class="section coral lighten-2 section-contact scrollspy">
+      <div class="container">
+        <h4 class="center"> Contact <span class="red-text">BitLife</span></h4>
+            <div class="row">
+            
+              <div class="col s12 m6">
+                <div class="card-panel red white-text center">
+                    <i class="material-icons">email</i>
+                    <h4>Contact us for more Info</h4>
+                    <p class="valign-wrapper center-align"><i class="material-icons small">email</i> BitLife@yahoo.com</p>
+                    <p class="valign-wrapper center-align"><i class="material-icons small ">phone</i> +2347035734905</p>
+                </div>
+                
+            </div>
+            <div class="col s12 m6">
+                <div class="card-panel">
+                    <h4 class="red-text">Please fillout these form.</h4>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter a name">
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter a email">
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter a phone">
+                    </div>
+                    <div class="input-field">
+                        <textarea class="materialize-textarea" placeholder="Enter message"></textarea>
+                    </div>
+                    <div class="input-field">
+                        <input type="submit" value="Submit" class="btn float-right" style="background:#000; color:red">
+                    </div>
+                </div>
+            </div>
+          
+              
+          
+          </div>
+      </div>
+  </section>
+  <section class="section section-follow red darken-2 white-text center">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h4>Follow Us</h4>
+                <p>Follow us on social media for special offers</p>
+                <a href="" class="white-text">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+                <a href="" class="white-text">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+                <a href="" class="white-text">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="" class="white-text">
+                    <i class="fab fa-google-plus fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+  <footer class="section black lighten-5 white-text center">
+    
+    <p class="flow-text"> <span class="red-text">BitLife</span>&copy; 2020</p>
+</footer>
 
 {% endblock %}
