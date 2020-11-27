@@ -7,59 +7,7 @@
 {% block extra_head %}
 
 <style>
-  body{
-    padding: 0;
-    margin: 0;
-    }
-    
-  .jumbotron{
-      padding: 200px;
-      color: #ffffff;
-      text-align: center;
-      
-      height: 600px;
-      width: 100%;
-      }
-
-  .figures{
-        font-family: 'poppins';
-      }
-
-  .bg-cover{
-        background-image: url('{% static "bloodapp/img/bgMain.jpeg" %}');
-      background-size: cover;
-      color: white;
-      background-position: center center;
-      position: relative;
-      z-index: -2;
-      }
-
-  .down{
-        margin-top: 20px;
-      }
-
-  .overlay{
-        background-color: #000;
-        color: white;
-        position: absolute;
-        opacity: 0.5;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
-      }
-
-  .head{
-        color:#d40404;
-        font-family: 'Poppins';
-      }
-
-  .info{
-   
-    height: 100%;
-    width: 100%;
-}
+ 
 </style>
 
 {% endblock %}
@@ -93,7 +41,7 @@
     <section id="about" class="section section-about black lighten-3 white-text center scrollspy">
         <div class="container">
           <div class="row">
-            <h4 class="center">About <span class="red-text">BitLife</span></h4>
+            <h4 class="center">About <span class="red-text">LifeBit</span></h4>
             <div class="col s12 m4 l4">
               <img class="info" src="{% static 'bloodapp/img/children.jpeg' %}" style="border: solid 1px #d40404;"> 
              
@@ -102,7 +50,7 @@
             <div class="col s12 m2 l2">
             </div>
             <div class="col s12 m6 l6">
-                <h5>BitLife is a platform that makes it easy for blood donors and recipients to connect and make transactions easly.</h5>
+                <h5><span class="red-text">LifeBit</span> is a platform that makes it easy for blood donors and recipients to connect and make transactions easly.</h5>
                 <p>Our platform:</p>
                 <ul >
                   <li>Simplifies transactions for those seeking to donate blood.</li>
@@ -146,7 +94,7 @@
 
     <section id="contact" class="section coral lighten-2 section-contact scrollspy">
       <div class="container">
-        <h4 class="center"> Contact <span class="red-text">BitLife</span></h4>
+        <h4 class="center"> Contact <span class="red-text">LifeBit</span></h4>
             <div class="row">
             
               <div class="col s12 m6">
@@ -174,7 +122,7 @@
                         <textarea class="materialize-textarea" placeholder="Enter message"></textarea>
                     </div>
                     <div class="input-field">
-                        <input type="submit" value="Submit" class="btn float-right" style="background:#000; color:red">
+                        <input type="submit" value="Submit" class="btn float-right" id="myBtn">
                     </div>
                 </div>
             </div>
@@ -208,7 +156,7 @@
 </section>
   <footer class="section black lighten-5 white-text center">
     
-    <p class="flow-text"> <span class="red-text">BitLife</span>&copy; 2020</p>
+    <p class="flow-text"> <span class="red-text">LifeBit</span>&copy; 2020</p>
 </footer>
 
 {% endblock %}

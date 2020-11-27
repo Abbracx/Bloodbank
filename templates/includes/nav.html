@@ -8,13 +8,13 @@
                 <a href="#" data-target="mobile-nav" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                 </a>
-                
+
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="{% url 'bloodapp:homepage' %}">Home</a>
+                        <a href="{% url 'bloodapp:homepage' %}" >Home</a>
                     </li>
                 {% if user.is_authenticated %}
-                    
+
                     <li>
                         <a href="{% url 'bloodapp:dashboard' %}">Dashboard</a>
                     </li>
@@ -36,7 +36,7 @@
                     <li>
                         <a href="{% url 'account_logout' %}">SignOut</a>
                     </li>
-                  
+
                     {% else %}
                     <li>
                         <a href="#">About</a>
@@ -48,27 +48,30 @@
                         <a href="#">Contact</a>
                     </li>
                       <li>
-                          <a href="{% url 'account_login' %}">Sign In</a>
+                          <a href= "{% url 'account_login' %}" class="btn">Login</a>
                       </li>
                       <li>
-                          <a href="{% url 'account_signup' %} ">Sign Up</a>
+                          <a href="{% url 'account_signup' %} " class="btn" style="background:red">Register</a>
                       </li>
                     {% endif %}
                 </ul>
-              
-             
+
+
+                <a href= "{% url 'account_login' %}" class="visible btn" style="background:red; margin-top: 10px;">JOIN</a>
+
+
             </div>
         </div>
     </nav>
 </div>
- 
+
 <div class="container">
     <ul class="sidenav" id="mobile-nav">
         <li>
-                        <a href="{% url 'bloodapp:homepage' %}">Home</a>
-                    </li>
+        <a href="{% url 'bloodapp:homepage' %}">Home</a>
+        </li>
                 {% if user.is_authenticated %}
-                    
+
                     <li>
                         <a href="{% url 'bloodapp:dashboard' %}">Dashboard</a>
                     </li>
@@ -90,7 +93,7 @@
                     <li>
                         <a href="{% url 'account_logout' %}">SignOut</a>
                     </li>
-                  
+
                     {% else %}
                     <li>
                         <a href="#">About</a>
@@ -101,16 +104,7 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
-                    
-                    <li>
-                        <a href="{% url 'account_login' %}">Sign In</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'account_signup' %} ">Sign Up</a>
-                    </li>
-                  
-                      
                     {% endif %}
-    </ul>    
+    </ul>
+
 </div>
- 

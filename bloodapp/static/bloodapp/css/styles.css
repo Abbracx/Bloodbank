@@ -1,0 +1,121 @@
+body{
+    padding: 0;
+    margin: 0;
+    }
+
+  .jumbotron{
+      padding: 200px;
+      color: #ffffff;
+      text-align: center;
+
+      height: 600px;
+      width: 100%;
+      }
+
+  .figures{
+        font-family: 'poppins';
+      }
+
+  .bg-cover{
+        background-image: url('{% static "bloodapp/img/bgMain.jpeg" %}');
+      background-size: cover;
+      color: white;
+      background-position: center center;
+      position: relative;
+      z-index: -2;
+      }
+
+  .down{
+        margin-top: 20px;
+      }
+
+  .overlay{
+        background-color: #000;
+        color: white;
+        position: absolute;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+      }
+
+  .head{
+        color:#d40404;
+        font-family: 'Poppins';
+      }
+
+  .info{
+
+    height: 100%;
+    width: 100%;
+}
+
+.visible{
+  display: block;
+  float: right;
+  padding: 0 14px;
+  right: 0;
+  top: 0;
+  font-weight: bolder;
+}
+
+#myBtn{
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  width: 50%;
+}
+#loginBtn{
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  width: 50%;
+}
+
+
+  input[type=text], input[type=password]{
+    border-bottom: none !important;
+    outline: none !important;
+    border-bottom: solid 1px red !important;
+    border-radius: 14px 2px 2px 14px !important;
+    color: black;
+      }
+
+  .form-wrapper{
+    margin: 30px 15px;
+  }
+
+  .image-box {
+
+    /* Here's the trick */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , var("../../img/bloodart.jpg") center center;
+    background-size: cover;
+
+    /* Here's the same styles we applied to our content-div earlier */
+    color: rgb(83, 73, 73);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+#panel-id{
+  border-radius: 20px;
+  width: 50%;
+  margin: auto;
+}
+@media screen and (min-width: 600px){
+            .visible{
+                display: none;
+            },
+
+    }
+
+  @media screen and (max-width: 600px){
+      #myBtn, #loginBtn, .panel{
+          width: 100%;
+      }
+  }
