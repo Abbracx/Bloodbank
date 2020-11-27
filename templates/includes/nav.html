@@ -56,13 +56,30 @@
                     {% endif %}
                 </ul>
 
-
-                <a href= "{% url 'account_login' %}" class="visible btn" style="background:red; margin-top: 10px;">JOIN</a>
-
-
+                {% if user.is_authenticated %}
+                    <a href="" class="visible dropdown-trigger" data-target='dropdown1'><i class="fa fa-user-circle fa-2x fa-fw" aria-hidden="true"></i></a>
+                    <a href="{% url 'bloodrequestapp:incoming_request' %}" class="visible"><i class="fa fa-bell"></i></a>
+                {% else %}
+                     <a href= "{% url 'account_login' %}" class="visible btn" style="background:red; margin-top: 10px;">JOIN</a>
+                {% endif %}
             </div>
         </div>
     </nav>
+</div>
+
+
+<div class="container" >
+    <ul id='dropdown1' class='dropdown-content black ' style="margin-top: 20px">
+        <li ><a href="#!" class="red-text">dashboard</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" class="red-text">donate</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="#!" class="red-text">refer</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="{% url 'bloodapp:profile' user.user_id %}" class="red-text">profile</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="{% url 'account_logout' %}" class=" red white-text">Logout</li>
+    </ul>
 </div>
 
 <div class="container">

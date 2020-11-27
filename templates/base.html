@@ -59,10 +59,17 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-          var elems = document.querySelectorAll('select');
-          var instances = M.FormSelect.init(elems, {});
+          const sl = document.querySelectorAll('select');
+          M.FormSelect.init(sl, {});
+
+
+          const db = document.querySelectorAll('.dropdown-trigger');
+         M.Dropdown.init(db, {});
         });
 
+        window.addEventListener('click', e => {
+           console.log(23)
+        });
 
 
       {% if user.is_authenticated %}
