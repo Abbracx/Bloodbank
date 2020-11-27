@@ -8,7 +8,7 @@
     <title>{% block head_title %}{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -25,14 +25,14 @@
         {% block extra_head %}{% endblock %}
 
   </head>
-  
+
   <body id="home" class="scrollspy">
-    
+
 <!-- ================== Content block ================== -->
 <main role="main">
   {% include 'includes/nav.html' %}
 </main>
-{% include 'includes/messages.html' %} 
+{% include 'includes/messages.html' %}
 {% block body %}{% endblock %}
 
 {% block extra_body %}{% endblock %}
@@ -58,15 +58,21 @@
             interval: 3000
         });
 
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, {});
+        });
+
+
 
       {% if user.is_authenticated %}
         console.log(window.location)
-        
+
           var formData = $("#request_form")
           var bloodGroupInput = $("#id_blood_group")
           var reasonInput = $("#id_reason")
           var messageInput = $("#id_message")
-          
+
           var loc = window.location
           var ws_start = 'ws://'
 
@@ -84,11 +90,11 @@
             console.log('message', e)
 
             formData.submit(function(event){
-                
+
                 let blood_group = bloodGroupInput.val()
                 let reason = reasonInput.val()
                 let message = messageInput.val()
-                
+
                 var obj = {
                   "blood" : blood_group,
                   "reason": reason,
@@ -96,7 +102,7 @@
                 }
                 socket.send(JSON.stringify(obj))
             })
-            
+
           }
           socket.onerror = function(e){
             console.log('message', e)
@@ -105,9 +111,9 @@
             console.log('message', e)
           }
 
-        
 
-        
+
+
 
       {% endif %}
     </script>

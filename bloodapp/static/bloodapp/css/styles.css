@@ -75,7 +75,7 @@ body{
 }
 
 
-  input[type=text], input[type=password]{
+  input[type=text], input[type=password], input[type=email], textarea{
     border-bottom: none !important;
     outline: none !important;
     border-bottom: solid 1px red !important;

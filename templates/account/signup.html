@@ -13,7 +13,7 @@ body{
 background-image: url({% static 'bloodapp/img/logo.png' %});
 
 background-repeat: no-repeat;
-background-position:  550px 170px;
+background-position:  550px 350px;
 background-size: 300px 300px;
 
 opacity: 0.9;
@@ -30,7 +30,6 @@ width: 100%;
             <div class="col s12 l12" >
               <h3 class="center x-large black-text">{% trans "SIGN UP" %}</h3>
               <div class="card-panel panel z-depth-5">
-                <h5>{% trans "Register For An Account." %}</h5>
               <p>{% blocktrans %}Already have an account? Then please
                 <a href="{{ login_url }}"><span class="red-text">Login</span></a>.{% endblocktrans %}</p>
 
@@ -38,9 +37,9 @@ width: 100%;
                       {% csrf_token %}
                             {{form.non_field_errors}}
                             {% for field in form %}
-                            <div class="form-wrapper">
-                              {{field.erroes}}
-                              {{field}}
+                            <div class="form-wrapper hoverable">
+                              {{field.errors}}
+                              {{field.label_tag}}{{field}}
                             </div>
                             {% endfor %}
                       {% if redirect_field_value %}
