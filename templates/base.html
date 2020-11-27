@@ -8,44 +8,57 @@
     <title>{% block head_title %}{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'bloodapp/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'bloodapp/css/animate.css' %}">
+        
+        <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <script src="https://kit.fontawesome.com/9dd31e8a30.js" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="{% static 'bloodapp/css/styles.css' %}">
+
+        {% comment %} <link rel="stylesheet" href="{% static 'bloodapp/css/style.css' %}"> {% endcomment %}
+        {% comment %} <link rel="stylesheet" href="{% static 'bloodapp/css/animate.css' %}">
         <link rel="stylesheet" href="{% static 'bloodapp/maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'bloodapp/font-awesome-4.7.0/css/font-awesome.css' %}">
-        <link rel="stylesheet" href="{% static 'bloodapp/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'bloodapp/font-awesome-4.7.0/css/font-awesome.min.css' %}"> {% endcomment %}
 
         {% block extra_head %}{% endblock %}
 
   </head>
-  <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
+  
+  <body id="home" class="scrollspy">
     
 <!-- ================== Content block ================== -->
-        <main role="main">
-            {% include 'includes/nav.html' %}
-        </main>
+<main role="main">
+  {% include 'includes/nav.html' %}
+</main>
+{% include 'includes/messages.html' %} 
+{% block body %}{% endblock %}
 
-            {% block body %}
-            
-              
-              {% block content %}
-              {% include 'includes/messages.html' %} 
-              
-              {% endblock %} 
+{% block extra_body %}{% endblock %}
 
-            {% endblock %}
-
-            {% block extra_body %}{% endblock %}
-
-  <script src="{% static 'bloodapp/ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' %}"></script>
+  {% comment %} <script src="{% static 'bloodapp/ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' %}"></script>
   <script src="{% static 'bloodapp/js/script.js' %}"></script>
   <script src="{% static 'bloodapp/maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'bloodapp/js/wow.min.js' %}"></script>
-  
-
+   {% endcomment %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <script>
-      // INITIALIZING THE ANIMATION PLUGIN
-      new WOW().init();
+
+      const sideNav = document.querySelector('.sidenav');
+        M.Sidenav.init(sideNav, {});
+
+        //SLIDE
+        const slider = document.querySelector('.slider');
+        M.Slider.init(slider, {
+            indicators: false,
+            height: 400,
+            transition: 500,
+            interval: 3000
+        });
+
+
       {% if user.is_authenticated %}
         console.log(window.location)
         

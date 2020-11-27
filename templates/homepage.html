@@ -58,11 +58,27 @@
 
 {% endblock %}
 
-{% block content %}
+{% block body %}
 
-  {% include 'includes/homepage_jumbotron.html' %}
-  {% include 'includes/about.html' %}
-  {% include 'includes/contact_us.html' %}
-  {% include 'includes/footer.html' %}
+      <!--Section-->  
+    <section class="slider">
+        <ul class="slides">
+            <li>
+              <img src="{% static 'bloodapp/img/donate.jpg' %}"> <!-- random image -->
+            </li>
+            <li>
+              <img src="{% static 'bloodapp/img/donate2.jpg' %}"> <!-- random image -->
+            </li>
+            <li>
+              <img src="{% static 'bloodapp/img/donate3.jpg' %}"> <!-- random image -->
+            </li>
+        </ul>
+    </section>
      
+
+     <section id="search" class="section section-search black darken-1 white-text center scrollspy">
+        <div class="container">
+        </div> 
+    </section>
+
 {% endblock %}

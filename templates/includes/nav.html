@@ -1,58 +1,116 @@
   {% load static %}
   <!-- ================== nav bar ================== -->
-
-  {% if user.is_authenticated %}
-    <nav class="navbar navbar-default navbar-fixed-top">
-     <div class="container-fluid">
-       <div class="navbar-header">
-         <!--button to toggle navbar if it is resized  -->
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand animated fadeInDown" href="#">BloodApp Dashboard </a>
-          
-       </div>
-       <!-- navigation items -->
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-              <li><a onclick="window.location.href = ' {% url 'bloodapp:dashboard' %} ' "; class="animated fadeInDown prevent">DASHBOARD</a></li>
-              <li><a  onclick="window.location.href = ' {% url 'bloodrequestapp:blood_donate' %} ' ";  class="animated fadeInDown prevent">DONATE</a></li>
-              <li><a id="refer" onclick="window.location.href = ' {% url 'bloodrequestapp:blood_refer' %} ' "; class="animated fadeInDown prevent">REFER</a></li>
-              <li><a onclick="window.location.href = ' {% url 'bloodrequestapp:blood_request' %} ' ";  class="animated fadeInDown prevent">REQUEST</a></li>
-              <li><a onclick="window.location.href = ' {% url 'bloodrequestapp:user_requests' user.user_id %} ' ";  class="animated fadeInDown prevent">VIEW-REQUEST</a></li>
-              <li><a onclick="window.location.href = ' {% url 'bloodrequestapp:incoming_request' %} ' "; class="animated fadeInDown prevent">notifications<i style="color: white;" class="fa fa-bell notification"><span class="badge" style="background-color:red">3</span></i></a></li>
-              <li><a onclick="window.location.href = ' {% url 'bloodapp:profile' user.user_id %} ' ";  class="animated fadeInDown prevent ">{{user.username}}<i style="color: white;" class="fa fa-user-circle-o"></i></a></li>
-              <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_logout' %} ';">Logout</button>         
-          </ul>
+<div class="navbar-fixed">
+    <nav class="black">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="{% url 'bloodapp:homepage' %}" class="brand-logo">LifeBit</a>
+                <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="{% url 'bloodapp:homepage' %}">Home</a>
+                    </li>
+                {% if user.is_authenticated %}
+                    
+                    <li>
+                        <a href="{% url 'bloodapp:dashboard' %}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:blood_donate' %}">Donate</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:blood_refer' %}">Refer</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:blood_request' %}">View-Request</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:incoming_request' %}">Notification</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodapp:profile' user.user_id %}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'account_logout' %}">SignOut</a>
+                    </li>
+                  
+                    {% else %}
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                      <li>
+                          <a href="{% url 'account_login' %}">Sign In</a>
+                      </li>
+                      <li>
+                          <a href="{% url 'account_signup' %} ">Sign Up</a>
+                      </li>
+                    {% endif %}
+                </ul>
+              
+             
+            </div>
         </div>
-     </div>
-   </nav>
-  {% else %}
-    <nav class="navbar navbar-default navbar-fixed-top">
-     <div class="container-fluid">
-       <div class="navbar-header">
-         <!--button to toggle navbar if it is resized  -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-          <a class="navbar-brand animated fadeInDown" href="{% url 'bloodapp:homepage' %}">BloodApp</a>
-       </div>
-       <!-- navigation items -->
-       <div class="collapse navbar-collapse" id="myNavbar">
-         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" class="animated fadeInDown">HOME</a></li>
-           <li><a href="#about" class="animated fadeInDown">ABOUT</a></li>
-           <li><a href="#support" class="animated fadeInDown">SUPPORT</a></li>
-           <li><a href="#contact" class="animated fadeInDown">CONTACT</a></li>
-           <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_signup' %} ';">Register</button>
-           <button style="background-color:#d40404; text-decoration: none; color: whitesmoke; margin-top: 5px; margin-left: 5px; margin-right: 5px;"type="button" class="btn  btn-md " onclick="window.location.href = ' {% url 'account_login' %} ';">Login</button>
-          
-         </ul>
-       </div>
-     </div>
-   </nav>
-{% endif %} 
+    </nav>
+</div>
+ 
+<div class="container">
+    <ul class="sidenav" id="mobile-nav">
+        <li>
+                        <a href="{% url 'bloodapp:homepage' %}">Home</a>
+                    </li>
+                {% if user.is_authenticated %}
+                    
+                    <li>
+                        <a href="{% url 'bloodapp:dashboard' %}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:blood_donate' %}">Donate</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:blood_refer' %}">Refer</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:blood_request' %}">View-Request</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodrequestapp:incoming_request' %}">Notification</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bloodapp:profile' user.user_id %}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'account_logout' %}">SignOut</a>
+                    </li>
+                  
+                    {% else %}
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    
+                    <li>
+                        <a href="{% url 'account_login' %}">Sign In</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'account_signup' %} ">Sign Up</a>
+                    </li>
+                  
+                      
+                    {% endif %}
+    </ul>    
+</div>
+ 

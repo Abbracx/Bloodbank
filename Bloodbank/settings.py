@@ -15,8 +15,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') == 'True'
-
+# DEBUG = os.environ.get('DEBUG') == 'True'
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -94,14 +94,14 @@ WSGI_APPLICATION = 'Bloodbank.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -149,7 +149,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'bloodapp.User'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
@@ -164,7 +164,7 @@ ACCOUNT_FORMS = {
 'signup': 'bloodapp.forms.CustomSignUpForm',
 }
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -178,15 +178,15 @@ CHANNEL_LAYERS = {
 }
 
 
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-#EMAIL_HOST = 'smtp.sendgrid.net'
-#EMAIL_PORT = 587
-#EMAIL_USE_TLS = True
-#EMAIL_HOST_USER = 'apikey'
-#EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
-#SENDGRID_SANDBOX_MODE_IN_DEBUG=False
+# EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+# SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+# #EMAIL_HOST = 'smtp.sendgrid.net'
+# #EMAIL_PORT = 587
+# #EMAIL_USE_TLS = True
+# #EMAIL_HOST_USER = 'apikey'
+# #EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+# #SENDGRID_SANDBOX_MODE_IN_DEBUG=False
 
-PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
+# PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
 
 django_heroku.settings(locals())
