@@ -2,31 +2,91 @@
 
 {% load i18n %}
 {% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}{% trans "LifeBit | Register" %}{% endblock %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block body %}
-<div class=container>
-<h1>{% trans "Register For An Account." %}</h1>
+{% block extra_head %}
+<style>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+body{
+background-image: url({% static 'bloodapp/img/logo.png' %});
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-      <div class="form-row">
-          <div class="form-group col-md-4  mb-0">
-              {{ form|crispy}}
-          </div>  
-      </div>  
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-   <div class="row">
-      <div class="col-sm-12 form-group ">
-        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-          <button style="background-color: #d40404;" class="btn btn-danger" type="submit">Register</button>
+background-repeat: no-repeat;
+background-position:  550px 170px;
+background-size: 300px 300px;
+
+opacity: 0.9;
+width: 100%;
+
+}
+</style>
+{% endblock %}
+{% block body%}
+
+<section class="section  center">
+  <div class=container>
+    <div class="row">
+            <div class="col s12 l12" >
+              <h3 class="center x-large black-text">{% trans "SIGN UP" %}</h3>
+              <div class="card-panel panel z-depth-5">
+                <h5>{% trans "Register For An Account." %}</h5>
+              <p>{% blocktrans %}Already have an account? Then please
+                <a href="{{ login_url }}"><span class="red-text">Login</span></a>.{% endblocktrans %}</p>
+
+                  <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                      {% csrf_token %}
+                            {{form.non_field_errors}}
+                            {% for field in form %}
+                            <div class="form-wrapper">
+                              {{field.erroes}}
+                              {{field}}
+                            </div>
+                            {% endfor %}
+                      {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                      {% endif %}
+                       <button class="btn " id="myBtn" type="submit">Register</button>
+                  </form>
+                  <div class="right-align" style="margin:1em; padding: 1em 0;">
+                    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                  </div>
+              </div>
+
+            </div>
+
+
+    </div>
+  </div>
+</section>
+
+<section class="section section-follow red darken-2 white-text center">
+  <div class="container">
+      <div class="row">
+          <div class="col s12">
+              <h4>Follow Us</h4>
+              <p>Follow us on social media for special offers</p>
+              <a href="" class="white-text">
+                  <i class="fab fa-facebook fa-2x"></i>
+              </a>
+              <a href="" class="white-text">
+                  <i class="fab fa-twitter fa-2x"></i>
+              </a>
+              <a href="" class="white-text">
+                  <i class="fab fa-linkedin fa-2x"></i>
+              </a>
+              <a href="" class="white-text">
+                  <i class="fab fa-google-plus fa-2x"></i>
+              </a>
+          </div>
       </div>
-    </div>    
-</form>
-</div>
+  </div>
+</section>
+<footer class="section black lighten-5 white-text center">
+
+  <p class="flow-text"> <span class="red-text">LifeBit</span>&copy; 2020</p>
+</footer>
+
+
+
 {% endblock %}
